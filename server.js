@@ -1,7 +1,18 @@
 var http = require('http'),
       fs = require('fs'),
     port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
      url = require('url');
+
+var express = require('express'),
+    app     = express(),
+    morgan  = require('morgan');
+    
+Object.assign=require('object-assign')
+
+app.engine('html', require('ejs').renderFile);
+app.use(morgan('combined'))
+
 
 http.createServer(function(request, response){
     /* Z požadavku vytáhnout path, který jsem si v klientu označil 
