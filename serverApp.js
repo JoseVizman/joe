@@ -1,5 +1,6 @@
 var http = require('http'),
       fs = require('fs'),
+    port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
      url = require('url');
 
 http.createServer(function(request, response){
@@ -22,5 +23,5 @@ http.createServer(function(request, response){
             response.end(file, "utf-8");  
         });
     }
-}).listen(8080);
+}).listen(port);
 console.log("server initialized");
