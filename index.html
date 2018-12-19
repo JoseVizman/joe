@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>MyPage</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	
+	<script>
+		function callServer()
+			{
+			   xmlhttp = new XMLHttpRequest();
+			   /* 2. parametr je adresa:port/můj identifikátor, abych v serverovém skriptu poznal, odku tento požadavek je - co se má vykonat*/
+			   xmlhttp.open("GET","http://localhost:8001/getstring", true);
+			   xmlhttp.onreadystatechange = function(){
+			         if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+			           string = JSON.parse(xmlhttp.responseText);
+			           console.log(string);
+			           var x = "";
+			           for (i in string) {
+						    x += string[i].name + "<br>";
+						}
+			           document.getElementById("demo").innerHTML = x;
+			         }
+			   }
+			   xmlhttp.send();
+			}
+			
+	</script> 
+
+	<h1>Loading Data from a file</h1>
+	<!-- <input id="inp" type="field" name="pole"> -->
+	<button id="btn" onclick="callServer()">GetData</button>
+
+	<p id="demo"></p>
+</body>
+</html>
+
