@@ -11,7 +11,7 @@
 			{
 			   xmlhttp = new XMLHttpRequest();
 			   /* 2. parametr je adresa:port/můj identifikátor, abych v serverovém skriptu poznal, odku tento požadavek je - co se má vykonat*/
-			   xmlhttp.open("GET","http://localhost:8001/getstring", true);
+			   xmlhttp.open("GET","http://localhost:8080/getstring", true);
 			   xmlhttp.onreadystatechange = function(){
 			         if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
 			           string = JSON.parse(xmlhttp.responseText);
